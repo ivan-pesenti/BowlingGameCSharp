@@ -23,14 +23,13 @@ namespace BowlingGame
 
         public Score Add(Roll secondRoll) => new Score(Value + secondRoll.Value);
 
+        public Score Add(Score otherScore) => new Score(Value + otherScore.Value);
+
+        public Score Add(Bonus bonus) => new Score(Value + bonus.Value);        
+
         public bool IsSpare()
         {
             return Value == 10;
-        }
-
-        public Score Add(Score otherScore)
-        {
-            return new Score(Value + otherScore.Value);
         }
     }
 }

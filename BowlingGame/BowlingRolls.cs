@@ -15,7 +15,7 @@ namespace BowlingGame
             _rolls = rolls;
         }
 
-        public bool HasElements()
+        public bool HasRolls()
         {
             return CanRoll();
         }
@@ -30,14 +30,12 @@ namespace BowlingGame
             return _rolls.Dequeue();
         }
 
-        public Roll Bonus(int position = 0)
+        public Bonus Bonus(int howManyRolls)
         {
-            if(_rolls.Count > position)
-            {
-                if (position == 0) return _rolls.Peek();
-                return _rolls.Skip(1).First();
-            }
-            return new Roll(0);
+            var bonusValue = _rolls
+                .Take(howManyRolls)
+                .Sum(roll => roll.Value);
+            return new Bonus(bonusValue);
         }
     }
 }
