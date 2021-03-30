@@ -31,16 +31,23 @@ namespace BowlingGame
                 var firstRoll = rolls.RollOne();
                 Score currentScore = new Score(firstRoll);
 
-                if (rolls.CanRoll())
+                if (firstRoll.Value == 10)
                 {
-                    var secondRoll = rolls.RollOne();
-                    currentScore = currentScore.Add(secondRoll);
-
-                    if (currentScore.IsSpare())
+                    currentScore = currentScore.Add(rolls.Bonus()).Add(rolls.Bonus(1));
+                }
+                else
+                {
+                    if (rolls.CanRoll())
                     {
-                        if (rolls.CanRoll())
+                        var secondRoll = rolls.RollOne();
+                        currentScore = currentScore.Add(secondRoll);
+
+                        if (currentScore.IsSpare())
                         {
-                            currentScore = currentScore.Add(rolls.Bonus());
+                            if (rolls.CanRoll())
+                            {
+                                currentScore = currentScore.Add(rolls.Bonus());
+                            }
                         }
                     }
                 }

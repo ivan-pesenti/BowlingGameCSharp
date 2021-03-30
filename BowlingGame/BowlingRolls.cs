@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace BowlingGame
@@ -29,9 +30,14 @@ namespace BowlingGame
             return _rolls.Dequeue();
         }
 
-        public Roll Bonus()
+        public Roll Bonus(int position = 0)
         {
-            return _rolls.Peek();
+            if(_rolls.Count > position)
+            {
+                if (position == 0) return _rolls.Peek();
+                return _rolls.Skip(1).First();
+            }
+            return new Roll(0);
         }
     }
 }
