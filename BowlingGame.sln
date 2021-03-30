@@ -9,6 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingGame.Tests", "Bowlin
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{3B891AF0-CAAA-45CE-9C39-AD1D764EFF57}"
 	ProjectSection(SolutionItems) = preProject
+		Steps-2.md = Steps-2.md
 		Steps.md = Steps.md
 	EndProjectSection
 EndProject
