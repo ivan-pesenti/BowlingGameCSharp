@@ -1,4 +1,6 @@
-﻿namespace BowlingGame
+﻿using System;
+
+namespace BowlingGame
 {
     public class Roll
     {
@@ -8,5 +10,10 @@
         }
 
         public int Value { get; }
+
+        public bool IsStrike()
+        {
+            return Value == 10;
+        }
     }
 }
