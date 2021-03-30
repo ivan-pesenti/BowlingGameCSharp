@@ -1,5 +1,3 @@
-# overview
-
 # repro steps
 1. add spare test cases to unit test class
 1. change compute score method to manage spare logic.
