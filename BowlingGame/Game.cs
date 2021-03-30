@@ -27,43 +27,9 @@ namespace BowlingGame
         {
             if (firstRoll.IsStrike())
             {
-                return StrikeFrameScore(rolls);
-            }
-            return OpenFrameScore(rolls, firstRoll);
-        }
-
-        private static Score OpenFrameScore(BowlingRolls rolls, Roll roll)
-        {
-            var currentScore = new Score(roll);
-            if (rolls.CanRoll())
-            {
-                var secondRoll = rolls.RollOne();
-                return ComputeScore(rolls, currentScore, secondRoll);
-            }
-
-            return currentScore;
-        }
-
-        private static Score ComputeScore(BowlingRolls rolls, Score currentScore, Roll secondRoll)
-        {
-            currentScore = currentScore.Add(secondRoll);
-            if (currentScore.IsSpare())
-            {
-                currentScore = SpareFrameScore(rolls, currentScore);
-            }
-
-            return currentScore;
-        }
-
-        private static Score SpareFrameScore(BowlingRolls rolls, Score currentScore)
-        {
-            currentScore = currentScore.Add(rolls.Bonus(1));
-            return currentScore;
-        }
-
-        private static Score StrikeFrameScore(BowlingRolls rolls)
-        {
-            return new Score(10).Add(rolls.Bonus(2));
+                return new StrikeFrame().Score(rolls);
+            }            
+            return new OpenFrame(firstRoll).Score(rolls);
         }
     }
 }
