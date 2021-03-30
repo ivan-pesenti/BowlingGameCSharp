@@ -15,21 +15,12 @@ namespace BowlingGame
             while (rolls.HasRolls() && currentOfFrames < maxNumberOfFrames)
             {
                 var firstRoll = rolls.RollOne();
-                var frameScore = FrameScore(rolls, firstRoll);
-                totalScore = totalScore.Add(frameScore);
+                var frame = Frame.From(firstRoll);
+                totalScore = totalScore.Add(frame.Score(rolls));
                 currentOfFrames++;
             }
 
             return totalScore;
-        }
-
-        private static Score FrameScore(BowlingRolls rolls, Roll firstRoll)
-        {
-            if (firstRoll.IsStrike())
-            {
-                return new StrikeFrame().Score(rolls);
-            }            
-            return new OpenFrame(firstRoll).Score(rolls);
         }
     }
 }

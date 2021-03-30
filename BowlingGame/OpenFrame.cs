@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BowlingGame
 {
-    public class OpenFrame
+    public class OpenFrame : IFrame
     {
         private readonly Roll _firstRoll;
 
@@ -17,13 +17,12 @@ namespace BowlingGame
         {
             if (rolls.CanRoll())
             {
-                var secondRoll = rolls.RollOne();
-                return ComputeScore(rolls, _firstRoll, secondRoll);
+                return EvaluateAsSpare(rolls, _firstRoll, rolls.RollOne());
             }
             return new Score(_firstRoll);
         }
 
-        private Score ComputeScore(BowlingRolls rolls, Roll firstRoll, Roll secondRoll)
+        private Score EvaluateAsSpare(BowlingRolls rolls, Roll firstRoll, Roll secondRoll)
         {
             var currentScore = new Score(firstRoll).Add(secondRoll);
             if (currentScore.IsSpare())
