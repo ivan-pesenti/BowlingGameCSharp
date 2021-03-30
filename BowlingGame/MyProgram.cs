@@ -19,40 +19,45 @@ namespace BowlingGame
             Console.WriteLine(totalScore);
         }
 
-        private static Score ComputeScore(Queue<Roll> rolls)
+        private static Score ComputeScore(BowlingRolls rolls)
         {
             Score totalScore = new Score();
 
-            for(var i = 0; i < rolls.Count;)
+            const int maxNumberOfFrames = 10;
+            int currentOfFrames = 0;
+
+            while (rolls.HasElements() && currentOfFrames < maxNumberOfFrames)
             {
-                var firstRoll = rolls.Dequeue();
+                var firstRoll = rolls.RollOne();
                 Score currentScore = new Score(firstRoll);
 
-                if (i < rolls.Count)
+                if (rolls.CanRoll())
                 {
-                    var secondRoll = rolls.Dequeue();
+                    var secondRoll = rolls.RollOne();
                     currentScore = currentScore.Add(secondRoll);
 
                     if (currentScore.IsSpare())
                     {
-                        if (i < rolls.Count)
+                        if (rolls.CanRoll())
                         {
-                            currentScore = currentScore.Add(rolls.Peek());                            
+                            currentScore = currentScore.Add(rolls.Bonus());
                         }
                     }
                 }
+
                 totalScore = totalScore.Add(currentScore);
+                currentOfFrames++;
             }
             return totalScore;
         }
 
-        private static Queue<Roll> ParseInput(string[] args)
+        private static BowlingRolls ParseInput(string[] args)
         {
             List<Roll> rolls = args
                 .Select(int.Parse)
                 .Select(rollValue => new Roll(rollValue))
                 .ToList();
-            return new Queue<Roll>(rolls);
+            return new BowlingRolls(new Queue<Roll>(rolls));
         }
     }
 }
