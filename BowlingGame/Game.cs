@@ -10,14 +10,16 @@ namespace BowlingGame
         {
             Score totalScore = new Score();
             const int maxNumberOfFrames = 10;
-            int currentOfFrames = 0;
+            int currentNumberOfFrames = 0;
 
-            while (rolls.HasRolls() && currentOfFrames < maxNumberOfFrames)
+            while (rolls.HasRolls() && currentNumberOfFrames < maxNumberOfFrames)
             {
-                var firstRoll = rolls.RollOne();
-                var frame = Frame.From(firstRoll);
-                totalScore = totalScore.Add(frame.Score(rolls));
-                currentOfFrames++;
+                totalScore = Frame
+                    .From(rolls.RollOne())
+                    .Score(rolls)
+                    .Add(totalScore);
+
+                currentNumberOfFrames++;
             }
 
             return totalScore;
