@@ -13,7 +13,7 @@ namespace BowlingGame
             _rolls = rolls;
         }
 
-        public Score Score(int howManyBonus) 
+        public IScore Score(int howManyBonus) 
         {
             return new Score(10).Add(_rolls.Bonus(howManyBonus));
         }

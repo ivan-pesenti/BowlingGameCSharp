@@ -14,7 +14,7 @@ namespace BowlingGame
             PrintTotalScore(totalScore);
         }
 
-        private static void PrintTotalScore(Score totalScore)
+        private static void PrintTotalScore(TotalScore totalScore)
         {
             Console.WriteLine(totalScore);
         }
