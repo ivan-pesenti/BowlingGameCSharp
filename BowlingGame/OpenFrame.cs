@@ -27,7 +27,7 @@ namespace BowlingGame
             var currentScore = new Score(firstRoll).Add(secondRoll);
             if (currentScore.IsSpare())
             {
-                return new SpareFrame().Score(rolls);
+                return SpareFrame.Score(rolls);
             }
 
             return currentScore;
