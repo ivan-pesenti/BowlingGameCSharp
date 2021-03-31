@@ -18,7 +18,7 @@ namespace BowlingGame
 
         public override string ToString()
         {
-            return Value.ToString();
+            return $"{Environment.NewLine}{Value}";
         }
 
         public Score Add(Roll secondRoll) => new Score(Value + secondRoll.Value);
