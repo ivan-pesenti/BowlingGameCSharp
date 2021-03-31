@@ -33,7 +33,8 @@ namespace BowlingGame.Tests
         [InlineData("0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0", "0")]
         [InlineData("1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1", "20")]
         [InlineData("5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5", "150")]
-        [InlineData("10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10", "300")]
+        [InlineData("10,10,10,10,10,10,10,10,10,10,10,10", "300")]
+        [InlineData("10,9,1,5,5,7,2,10,10,10,9,0,8,2,9,1,10", "187")]
         public void GIVEN_AnInputFromTheCommandLine_WHEN_ItIsAListOfRolls_THEN_ItPrintsTheTotalScoreOnANewLine(string inputRollsStr, string expectedTotalScore)
         {
             using var myOut = new StringWriter();
