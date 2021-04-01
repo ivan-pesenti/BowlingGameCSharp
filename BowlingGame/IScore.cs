@@ -8,8 +8,8 @@ namespace BowlingGame
     {
         IScore Add(Roll secondRoll);
         IScore Add(IScore otherScore);
-        IScore Add(Bonus bonus);
-        Boolean IsSpare();
+        IScore Add(IBonus bonus);
+        bool IsSpare();
         TotalScore Add(TotalScore totalScore);
 
         int Value { get; }

@@ -19,7 +19,7 @@ namespace BowlingGame
             {
                 return EvaluateAsSpare(rolls, _firstRoll, rolls.RollOne());
             }
-            return new Score(_firstRoll);
+            return new InvalidScore(_firstRoll);
         }
 
         private IScore EvaluateAsSpare(BowlingRolls rolls, Roll firstRoll, Roll secondRoll)

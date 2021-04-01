@@ -47,7 +47,7 @@ namespace BowlingGame.Tests
         [InlineData("1", "-")]
         [InlineData("1,1", "2")]
         [InlineData("5,5", "-")]
-        [InlineData("5,5,1", "12,-")]
+        [InlineData("5,5,1", "11,-")]
         [InlineData("10", "-")]
         [InlineData("10,1", "-,-")]
         [InlineData("10,1,1", "12,2")]
